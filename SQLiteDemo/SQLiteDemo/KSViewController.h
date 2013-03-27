@@ -11,10 +11,16 @@
 @interface KSViewController : UIViewController
 {
     UIButton * addButton;
+    UIButton * deleteButton;
+    UIButton * updateButton;
 }
 
-@property (nonatomic, retain) IBOutlet UIButton * addButton;
+@property (nonatomic, strong) IBOutlet UIButton * addButton;
+@property (nonatomic, strong) IBOutlet UIButton * deleteButton;
+@property (nonatomic, strong) IBOutlet UIButton * updateButton;
 
 - (IBAction)addButtonPressed:(id)sender;
+- (IBAction)deleteButtonPressed:(id)sender;
+- (IBAction)updateButtonPressed:(id)sender;
 
 @end

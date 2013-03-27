@@ -20,6 +20,7 @@
 		211C7AAE1703AD1A00560C14 /* KSViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 211C7AAC1703AD1A00560C14 /* KSViewController_iPhone.xib */; };
 		211C7AB11703AD1A00560C14 /* KSViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 211C7AAF1703AD1A00560C14 /* KSViewController_iPad.xib */; };
 		211C7AB81703AE8100560C14 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 211C7AB71703AE8100560C14 /* libsqlite3.0.dylib */; };
+		211C7ABC1703B0C800560C14 /* KSCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 211C7ABB1703B0C800560C14 /* KSCustomer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		211C7AB01703AD1A00560C14 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/KSViewController_iPad.xib; sourceTree = "<group>"; };
 		211C7AB71703AE8100560C14 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		211C7AB91703AE9300560C14 /* KSDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSDefines.h; sourceTree = "<group>"; };
+		211C7ABA1703B0C800560C14 /* KSCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCustomer.h; sourceTree = "<group>"; };
+		211C7ABB1703B0C800560C14 /* KSCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCustomer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				211C7AB91703AE9300560C14 /* KSDefines.h */,
+				211C7ABA1703B0C800560C14 /* KSCustomer.h */,
+				211C7ABB1703B0C800560C14 /* KSCustomer.m */,
 				211C7AA01703AD1A00560C14 /* KSAppDelegate.h */,
 				211C7AA11703AD1A00560C14 /* KSAppDelegate.m */,
 				211C7AA91703AD1A00560C14 /* KSViewController.h */,
@@ -187,6 +192,7 @@
 				211C7A9E1703AD1A00560C14 /* main.m in Sources */,
 				211C7AA21703AD1A00560C14 /* KSAppDelegate.m in Sources */,
 				211C7AAB1703AD1A00560C14 /* KSViewController.m in Sources */,
+				211C7ABC1703B0C800560C14 /* KSCustomer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +327,7 @@
 				211C7AB61703AD1A00560C14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

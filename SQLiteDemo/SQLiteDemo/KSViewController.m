@@ -9,6 +9,7 @@
 #import "KSViewController.h"
 #import "/usr/include/sqlite3.h"
 #import "KSDefines.h"
+#import "KSCustomer.h"
 
 @interface KSViewController ()
 {
@@ -19,13 +20,17 @@
 - (void)closeDatabase;
 - (void)createTable;
 
-- (void)insertCustomer:(NSString *)name address:(NSString *)address age:(NSInteger)age;
+- (void)excuteSQL:(NSString *)sqlCmd;
+- (void)insertCustomer:(KSCustomer *)customer;
+- (void)deleteCustomer:(KSCustomer *)customer;
+- (void)updateCustomer:(KSCustomer *)oldValue newValue:(KSCustomer *)newValue;
+- (NSArray *)queryAllCustomers;
 
 @end
 
 @implementation KSViewController
 
-@synthesize addButton;
+@synthesize addButton, deleteButton, updateButton;
 
 - (void)viewDidLoad
 {
@@ -88,22 +93,16 @@
     }
 }
 
-- (void)createTable
+- (void)excuteSQLWithCString:(const char *)sqlCmd
 {
-    if (database == NULL) {
-        DLOG(@" >> Database does not open yet.");
-        return;
-    }
-    
     char * errorMsg;
-    const char * sqlCmd = "create table if not exists customer (id integer primary key autoincrement, name text not null, address text, age integer)";
     int state = sqlite3_exec(database, sqlCmd, NULL, NULL, &errorMsg);
     if (state == SQLITE_OK) {
-        DLOG(@" >> Succeed to create table. %@",
+        DLOG(@" >> Succeed to %@",
              [NSString stringWithCString:sqlCmd encoding:NSUTF8StringEncoding]);
     }
     else {
-        DLOG(@" >> Failed to create table. %@. Error: %@",
+        DLOG(@" >> Failed to %@. Error: %@",
              [NSString stringWithCString:sqlCmd encoding:NSUTF8StringEncoding],
              [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]);
         
@@ -111,30 +110,125 @@
     }
 }
 
-- (void)insertCustomer:(NSString *)name address:(NSString *)address age:(NSInteger)age
+- (void)excuteSQL:(NSString *)sqlCmd
+{
+    char * errorMsg;
+    const char * sql = [sqlCmd cStringUsingEncoding:NSUTF8StringEncoding];
+    int state = sqlite3_exec(database, sql, NULL, NULL, &errorMsg);
+    if (state == SQLITE_OK) {
+        DLOG(@" >> Succeed to %@", sqlCmd);
+    }
+    else {
+        DLOG(@" >> Failed to %@. Error: %@",
+             sqlCmd,
+             [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]);
+        
+        sqlite3_free(errorMsg);
+    }
+}
+
+- (void)createTable
 {
     if (database == NULL) {
         DLOG(@" >> Database does not open yet.");
         return;
     }
     
-    NSString * nsSqlCmd = [NSString stringWithFormat:@"insert into customer (name, address, age) values ('%@', '%@', %d)",
-                           name, address, age];
-    //    NSString * nsSqlCmd = [NSString stringWithFormat:@"insert into customer values (null, '1', '2', 3)"];
+    const char * sqlCmd = "create table if not exists customer (id integer primary key autoincrement, name text not null, address text, age integer)";
     
-    char * errorMsg;
-    const char * sqlCmd = [nsSqlCmd cStringUsingEncoding:NSUTF8StringEncoding];
-    int state = sqlite3_exec(database, sqlCmd, NULL, NULL, &errorMsg);
+    [self excuteSQLWithCString:sqlCmd];
+}
+
+- (void)insertCustomer:(KSCustomer *)customer
+{
+    if (customer == NULL){
+        DLOG(@" >> Error: invalid arguments.");
+        return;
+    }
+    
+    if (database == NULL) {
+        DLOG(@" >> Database does not open yet.");
+        return;
+    }
+    
+    NSString * sqlCmd = [NSString stringWithFormat:@"insert into customer (name, address, age) values ('%@', '%@', %d)",
+                           customer.name, customer.address, customer.age];
+    //    NSString * sqlCmd = [NSString stringWithFormat:@"insert into customer values (null, 'Name', 'Address', 28)"];
+    
+    [self excuteSQL:sqlCmd];
+}
+
+- (void)deleteCustomer:(KSCustomer *)customer
+{
+    if (customer == NULL || customer.name == NULL){
+        DLOG(@" >> Error: invalid arguments.");
+        return;
+    }
+    
+    if (database == NULL) {
+        DLOG(@" >> Database does not open yet.");
+        return;
+    }
+    
+    NSString * sqlCmd = [NSString stringWithFormat:@"delete from customer where name='%@'",
+                           customer.name];
+
+    [self excuteSQL:sqlCmd];
+}
+
+- (void)updateCustomer:(KSCustomer *)oldValue newValue:(KSCustomer *)newValue
+{
+    if (oldValue == NULL || oldValue.name == NULL || newValue == NULL) {
+        DLOG(@" >> Error: invalid arguments.");
+        return;
+    }
+    
+    if (database == NULL) {
+        DLOG(@" >> Database does not open yet.");
+        return;
+    }
+    
+    NSString * sqlCmd = [NSString stringWithFormat:@"update customer set address='%@',age=%d where name='%@'",
+                         newValue.address, newValue.age, oldValue.name];
+    
+    [self excuteSQL:sqlCmd];
+}
+
+- (NSArray *)queryAllCustomers
+{
+    NSMutableArray * array = [[NSMutableArray alloc] init];
+    
+    const char * sqlCmd = "select name, address, age from customer";
+    sqlite3_stmt * statement;
+    int state = sqlite3_prepare_v2(database, sqlCmd, -1, &statement, nil);
     if (state == SQLITE_OK) {
-        DLOG(@" >> Succeed to insert record. %@", nsSqlCmd);
+        DLOG(@" >> Succeed to prepare statement. %@",
+             [NSString stringWithCString:sqlCmd encoding:NSUTF8StringEncoding]);
     }
-    else {
-        DLOG(@" >> Failed to insert record. %@. Error: %@",
-             nsSqlCmd,
-             [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]);
+    
+    NSInteger index = 0;
+    while (sqlite3_step(statement) == SQLITE_ROW) {
+        // get raw data from statement
+        //
+        char * cstrName = (char *)sqlite3_column_text(statement, 0);
+        char * cstrAddress = (char *)sqlite3_column_text(statement, 1);
+        int age = sqlite3_column_int(statement, 2);
         
-        sqlite3_free(errorMsg);
+        NSString * name = [NSString stringWithCString:cstrName encoding:NSUTF8StringEncoding];
+        NSString * address = [NSString stringWithCString:cstrAddress encoding:NSUTF8StringEncoding];
+        KSCustomer * customer = [[KSCustomer alloc]
+                                 initWith:name
+                                 address:address
+                                 age:age];
+        [array addObject:customer];
+        
+        DLOG(@"   >> Record %d : %@ %@ %d", index++, name, address, age);
     }
+    
+    sqlite3_finalize(statement);
+    
+    DLOG(@" >> Query %d records.", [array count]);
+    return array;
 }
 
 - (IBAction)addButtonPressed:(id)sender
@@ -143,8 +237,39 @@
     NSString * address = @"上海张江高科";
     NSInteger age = 28;
     
-    [self insertCustomer:name address:address age:age];
+    KSCustomer * customer = [[KSCustomer alloc] initWith:name address:address age:age];
+    
+    [self insertCustomer:customer];
+    
+    [self queryAllCustomers];
 }
 
+- (IBAction)deleteButtonPressed:(id)sender
+{
+    NSString * name = @"飘飘白云";
+    NSString * address = @"上海张江高科";
+    NSInteger age = 28;
+    
+    KSCustomer * customer = [[KSCustomer alloc] initWith:name address:address age:age];
+    
+    [self deleteCustomer:customer];
+    
+    [self queryAllCustomers];
+}
+
+- (IBAction)updateButtonPressed:(id)sender
+{
+    NSString * name = @"飘飘白云";
+    NSString * address = @"上海张江高科";
+    NSString * newAddress = @"浦东新区张江高科";
+    NSInteger age = 28;
+    
+    KSCustomer * customer = [[KSCustomer alloc] initWith:name address:address age:age];
+    KSCustomer * newCustomer = [[KSCustomer alloc] initWith:name address:newAddress age:age];
+
+    [self updateCustomer:customer newValue:newCustomer];
+    
+    [self queryAllCustomers];
+}
 
 @end
