@@ -31,8 +31,6 @@
 
 @implementation KSViewController
 
-@synthesize addButton, deleteButton, updateButton;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
