@@ -24,4 +24,10 @@
     return self;
 }
 
+- (void)dealloc
+{
+    self.name = nil;
+    self.address = nil;
+}
+    
 @end
