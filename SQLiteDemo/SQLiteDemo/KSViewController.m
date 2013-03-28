@@ -20,7 +20,8 @@
 - (void)closeDatabase;
 - (void)createTable;
 
-- (void)excuteSQL:(NSString *)sqlCmd;
+- (BOOL)excuteSQL:(NSString *)sqlCmd;
+- (BOOL)excuteSQLWithCString:(const char *)sqlCmd;
 - (void)insertCustomer:(KSCustomer *)customer;
 - (void)deleteCustomer:(KSCustomer *)customer;
 - (void)updateCustomer:(KSCustomer *)oldValue newValue:(KSCustomer *)newValue;
@@ -93,7 +94,7 @@
     }
 }
 
-- (void)excuteSQLWithCString:(const char *)sqlCmd
+- (BOOL)excuteSQLWithCString:(const char *)sqlCmd
 {
     char * errorMsg;
     int state = sqlite3_exec(database, sqlCmd, NULL, NULL, &errorMsg);
@@ -108,9 +109,11 @@
         
         sqlite3_free(errorMsg);
     }
+    
+    return (state == SQLITE_OK);
 }
 
-- (void)excuteSQL:(NSString *)sqlCmd
+- (BOOL)excuteSQL:(NSString *)sqlCmd
 {
     char * errorMsg;
     const char * sql = [sqlCmd cStringUsingEncoding:NSUTF8StringEncoding];
@@ -125,6 +128,8 @@
         
         sqlite3_free(errorMsg);
     }
+    
+    return (state == SQLITE_OK);
 }
 
 - (void)createTable
@@ -229,6 +234,21 @@
     
     DLOG(@" >> Query %d records.", [array count]);
     return array;
+}
+
+- (BOOL)beginTransaction
+{
+    return [self excuteSQLWithCString:"BEGIN EXCLUSIVE TRANSACTION;"];
+}
+
+- (BOOL)commit
+{
+    return [self excuteSQLWithCString:"COMMIT TRANSACTION;"];	
+}
+
+- (BOOL)rollback
+{
+    return [self excuteSQLWithCString:"ROLLBACK TRANSACTION;"];
 }
 
 - (IBAction)addButtonPressed:(id)sender
