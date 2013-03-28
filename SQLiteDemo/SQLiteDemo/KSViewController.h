@@ -15,9 +15,9 @@
     UIButton * updateButton;
 }
 
-@property (nonatomic, strong) IBOutlet UIButton * addButton;
-@property (nonatomic, strong) IBOutlet UIButton * deleteButton;
-@property (nonatomic, strong) IBOutlet UIButton * updateButton;
+@property (nonatomic, weak) IBOutlet UIButton * addButton;
+@property (nonatomic, weak) IBOutlet UIButton * deleteButton;
+@property (nonatomic, weak) IBOutlet UIButton * updateButton;
 
 - (IBAction)addButtonPressed:(id)sender;
 - (IBAction)deleteButtonPressed:(id)sender;
