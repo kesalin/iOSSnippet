@@ -46,10 +46,6 @@
     [super viewDidUnload];
     
     [self closeDatabase];
-    
-    self.addButton = nil;
-    self.deleteButton = nil;
-    self.updateButton = nil;
 }
 
 - (void)didReceiveMemoryWarning
