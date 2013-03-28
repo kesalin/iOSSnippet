@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) NSString * address;
-@property (nonatomic) NSInteger age;
+@property (nonatomic, assign) NSInteger age;
 
 - (id)initWith:(NSString *)aName address:(NSString *)aAddress age:(NSInteger)aAge;
 
