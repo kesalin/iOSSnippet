@@ -154,7 +154,7 @@
     
     [_graph addPlot:boundLinePlot];
     
-    // Create a green plot area: 画点状线
+    // Create a green plot area: 画破折线
     //
     lineStyle                = [CPTMutableLineStyle lineStyle];
     lineStyle.lineWidth      = 3.f;
@@ -209,7 +209,7 @@
 
 -(void)changePlotRange
 {
-    // Setup plot space
+    // Change plot space
     CPTXYPlotSpace * plotSpace = (CPTXYPlotSpace *)_graph.defaultPlotSpace;
     
     plotSpace.xRange = [self CPTPlotRangeFromFloat:0.0 length:(3.0 + 2.0 * rand() / RAND_MAX)];
