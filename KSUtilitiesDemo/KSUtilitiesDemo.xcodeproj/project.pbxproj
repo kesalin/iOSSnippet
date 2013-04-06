@@ -10,6 +10,8 @@
 		210CD665170FE5510072991C /* KSPathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 210CD664170FE5510072991C /* KSPathUtil.m */; };
 		210CD66A170FEE1D0072991C /* KSErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 210CD669170FEE1D0072991C /* KSErrorHandler.m */; };
 		210CD670170FFC930072991C /* KSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210CD66F170FFC930072991C /* KSViewController.m */; };
+		21DBDBB417101FD000FD8750 /* KSExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DBDBB317101FD000FD8750 /* KSExceptionHandler.m */; };
+		21DBDBB61710240D00FD8750 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21DBDBB51710240D00FD8750 /* MessageUI.framework */; };
 		21F7A930170FCC6400C4EA55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F7A92F170FCC6400C4EA55 /* UIKit.framework */; };
 		21F7A932170FCC6400C4EA55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F7A931170FCC6400C4EA55 /* Foundation.framework */; };
 		21F7A934170FCC6400C4EA55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F7A933170FCC6400C4EA55 /* CoreGraphics.framework */; };
@@ -31,6 +33,9 @@
 		210CD669170FEE1D0072991C /* KSErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSErrorHandler.m; path = KSUtilities/KSErrorHandler.m; sourceTree = "<group>"; };
 		210CD66E170FFC930072991C /* KSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSViewController.h; path = Controllers/KSViewController.h; sourceTree = "<group>"; };
 		210CD66F170FFC930072991C /* KSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSViewController.m; path = Controllers/KSViewController.m; sourceTree = "<group>"; };
+		21DBDBB217101FD000FD8750 /* KSExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSExceptionHandler.h; path = KSUtilities/KSExceptionHandler.h; sourceTree = "<group>"; };
+		21DBDBB317101FD000FD8750 /* KSExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSExceptionHandler.m; path = KSUtilities/KSExceptionHandler.m; sourceTree = "<group>"; };
+		21DBDBB51710240D00FD8750 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		21F7A92C170FCC6400C4EA55 /* KSUtilitiesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSUtilitiesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F7A92F170FCC6400C4EA55 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		21F7A931170FCC6400C4EA55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -55,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21DBDBB61710240D00FD8750 /* MessageUI.framework in Frameworks */,
 				21F7A930170FCC6400C4EA55 /* UIKit.framework in Frameworks */,
 				21F7A932170FCC6400C4EA55 /* Foundation.framework in Frameworks */,
 				21F7A934170FCC6400C4EA55 /* CoreGraphics.framework in Frameworks */,
@@ -84,6 +90,7 @@
 		21F7A92E170FCC6400C4EA55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21DBDBB51710240D00FD8750 /* MessageUI.framework */,
 				21F7A92F170FCC6400C4EA55 /* UIKit.framework */,
 				21F7A931170FCC6400C4EA55 /* Foundation.framework */,
 				21F7A933170FCC6400C4EA55 /* CoreGraphics.framework */,
@@ -138,6 +145,8 @@
 				210CD664170FE5510072991C /* KSPathUtil.m */,
 				210CD668170FEE1D0072991C /* KSErrorHandler.h */,
 				210CD669170FEE1D0072991C /* KSErrorHandler.m */,
+				21DBDBB217101FD000FD8750 /* KSExceptionHandler.h */,
+				21DBDBB317101FD000FD8750 /* KSExceptionHandler.m */,
 			);
 			name = KSUtilities;
 			sourceTree = "<group>";
@@ -239,6 +248,7 @@
 				210CD665170FE5510072991C /* KSPathUtil.m in Sources */,
 				210CD66A170FEE1D0072991C /* KSErrorHandler.m in Sources */,
 				210CD670170FFC930072991C /* KSViewController.m in Sources */,
+				21DBDBB417101FD000FD8750 /* KSExceptionHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

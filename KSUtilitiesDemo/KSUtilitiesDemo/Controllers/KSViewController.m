@@ -33,7 +33,8 @@
     
     _testItems = @{
                    @"Common error":@"testError",
-                   @"Fatal error":@"testFatalError"
+                   @"Fatal error":@"testFatalError",
+                   @"Exception":@"testException"
                    };
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
@@ -129,6 +130,14 @@
                                                 code:11 userInfo:userInfo];
     
     [KSErrorHandler handleError:error isFatal:YES];
+}
+
+- (void)testException
+{
+    NSException * e = [[NSException alloc] initWithName:@"FakeException"
+                                                 reason:@"The developer sucks!"
+                                               userInfo:[NSDictionary dictionaryWithObject:@"Extra info" forKey:@"Key"]];
+    [e raise];
 }
 
 @end

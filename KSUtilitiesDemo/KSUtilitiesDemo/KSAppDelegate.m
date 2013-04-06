@@ -7,12 +7,22 @@
 //
 
 #import "KSAppDelegate.h"
+#import "KSExceptionHandler.h"
 
 @implementation KSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
+#if !TARGET_IPHONE_SIMULATOR
+
+    KSExceptionHandler * exceptionHandler = [KSExceptionHandler sharedInstance];
+    exceptionHandler.parentViewController = self.window.rootViewController;
+    [exceptionHandler setOrCheckExceptionHandler];
+
+#endif
+    
     return YES;
 }
 							
