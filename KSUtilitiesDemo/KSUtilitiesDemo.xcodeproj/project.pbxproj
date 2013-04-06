@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210CD665170FE5510072991C /* KSPathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 210CD664170FE5510072991C /* KSPathUtil.m */; };
+		210CD66A170FEE1D0072991C /* KSErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 210CD669170FEE1D0072991C /* KSErrorHandler.m */; };
+		210CD670170FFC930072991C /* KSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210CD66F170FFC930072991C /* KSViewController.m */; };
 		21F7A930170FCC6400C4EA55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F7A92F170FCC6400C4EA55 /* UIKit.framework */; };
 		21F7A932170FCC6400C4EA55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F7A931170FCC6400C4EA55 /* Foundation.framework */; };
 		21F7A934170FCC6400C4EA55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F7A933170FCC6400C4EA55 /* CoreGraphics.framework */; };
@@ -17,11 +20,17 @@
 		21F7A944170FCC6400C4EA55 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F7A943170FCC6400C4EA55 /* Default@2x.png */; };
 		21F7A946170FCC6400C4EA55 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F7A945170FCC6400C4EA55 /* Default-568h@2x.png */; };
 		21F7A949170FCC6400C4EA55 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21F7A947170FCC6400C4EA55 /* MainStoryboard.storyboard */; };
-		21F7A94C170FCC6400C4EA55 /* KSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F7A94B170FCC6400C4EA55 /* KSViewController.m */; };
 		21F7A957170FCCF800C4EA55 /* KSImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F7A956170FCCF800C4EA55 /* KSImageCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		210CD663170FE5510072991C /* KSPathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSPathUtil.h; path = KSUtilities/KSPathUtil.h; sourceTree = "<group>"; };
+		210CD664170FE5510072991C /* KSPathUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSPathUtil.m; path = KSUtilities/KSPathUtil.m; sourceTree = "<group>"; };
+		210CD667170FE9010072991C /* KSDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSDefines.h; path = KSUtilities/KSDefines.h; sourceTree = "<group>"; };
+		210CD668170FEE1D0072991C /* KSErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSErrorHandler.h; path = KSUtilities/KSErrorHandler.h; sourceTree = "<group>"; };
+		210CD669170FEE1D0072991C /* KSErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSErrorHandler.m; path = KSUtilities/KSErrorHandler.m; sourceTree = "<group>"; };
+		210CD66E170FFC930072991C /* KSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSViewController.h; path = Controllers/KSViewController.h; sourceTree = "<group>"; };
+		210CD66F170FFC930072991C /* KSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSViewController.m; path = Controllers/KSViewController.m; sourceTree = "<group>"; };
 		21F7A92C170FCC6400C4EA55 /* KSUtilitiesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSUtilitiesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F7A92F170FCC6400C4EA55 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		21F7A931170FCC6400C4EA55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -36,8 +45,6 @@
 		21F7A943170FCC6400C4EA55 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		21F7A945170FCC6400C4EA55 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		21F7A948170FCC6400C4EA55 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		21F7A94A170FCC6400C4EA55 /* KSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSViewController.h; sourceTree = "<group>"; };
-		21F7A94B170FCC6400C4EA55 /* KSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSViewController.m; sourceTree = "<group>"; };
 		21F7A955170FCCF800C4EA55 /* KSImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSImageCache.h; path = KSUtilities/KSImageCache.h; sourceTree = "<group>"; };
 		21F7A956170FCCF800C4EA55 /* KSImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSImageCache.m; path = KSUtilities/KSImageCache.m; sourceTree = "<group>"; };
 		21F7A95D170FCFD400C4EA55 /* KSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSLog.h; path = KSUtilities/KSLog.h; sourceTree = "<group>"; };
@@ -123,9 +130,14 @@
 		21F7A953170FCC8D00C4EA55 /* KSUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				210CD667170FE9010072991C /* KSDefines.h */,
 				21F7A95D170FCFD400C4EA55 /* KSLog.h */,
 				21F7A955170FCCF800C4EA55 /* KSImageCache.h */,
 				21F7A956170FCCF800C4EA55 /* KSImageCache.m */,
+				210CD663170FE5510072991C /* KSPathUtil.h */,
+				210CD664170FE5510072991C /* KSPathUtil.m */,
+				210CD668170FEE1D0072991C /* KSErrorHandler.h */,
+				210CD669170FEE1D0072991C /* KSErrorHandler.m */,
 			);
 			name = KSUtilities;
 			sourceTree = "<group>";
@@ -133,8 +145,8 @@
 		21F7A954170FCC9600C4EA55 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				21F7A94A170FCC6400C4EA55 /* KSViewController.h */,
-				21F7A94B170FCC6400C4EA55 /* KSViewController.m */,
+				210CD66E170FFC930072991C /* KSViewController.h */,
+				210CD66F170FFC930072991C /* KSViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -223,8 +235,10 @@
 			files = (
 				21F7A93C170FCC6400C4EA55 /* main.m in Sources */,
 				21F7A940170FCC6400C4EA55 /* KSAppDelegate.m in Sources */,
-				21F7A94C170FCC6400C4EA55 /* KSViewController.m in Sources */,
 				21F7A957170FCCF800C4EA55 /* KSImageCache.m in Sources */,
+				210CD665170FE5510072991C /* KSPathUtil.m in Sources */,
+				210CD66A170FEE1D0072991C /* KSErrorHandler.m in Sources */,
+				210CD670170FFC930072991C /* KSViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +361,7 @@
 				21F7A951170FCC6400C4EA55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

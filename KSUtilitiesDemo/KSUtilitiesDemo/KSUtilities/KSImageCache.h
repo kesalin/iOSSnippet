@@ -13,6 +13,8 @@
 + (id)imageNamed:(NSString *)name;
 + (BOOL)setImage:(UIImage *)image forName:(NSString *)name;
 + (BOOL)setImagePath:(NSString *)filepath forName:(NSString *)name;
++ (void)removeImage:(NSString *)name;
++ (void)removeImages:(NSArray *)names;
 + (void)clear;
 
 @end

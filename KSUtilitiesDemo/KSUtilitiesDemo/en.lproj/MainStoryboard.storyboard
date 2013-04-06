@@ -1,26 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Bp5-jH-pmq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - KSUtilities Demo-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="KSViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xap-vz-IOd">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xap-vz-IOd" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="HmK-b6-ACx"/>
+                            <constraint firstItem="xap-vz-IOd" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="J2f-fj-DJa"/>
+                            <constraint firstItem="xap-vz-IOd" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="doY-gQ-khO"/>
+                            <constraint firstItem="xap-vz-IOd" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="rts-TL-SVD"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="KSUtilities Demo" id="dVO-pE-2HA"/>
+                    <connections>
+                        <outlet property="mainTableView" destination="xap-vz-IOd" id="42r-aW-5EM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="807" y="-40"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eLb-IO-llc">
+            <objects>
+                <navigationController id="Bp5-jH-pmq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BZ3-HD-FWH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="bVm-YI-Z0A"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdu-bD-T5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="460" y="-40"/>
         </scene>
     </scenes>
     <classes>
         <class className="KSViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/KSViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mainTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

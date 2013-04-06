@@ -18,6 +18,8 @@
 - (id)imageForKey:(NSString *)name;
 - (BOOL)setImage:(UIImage *)image forKey:(NSString *)name;
 - (BOOL)setImagePath:(NSString *)filepath forKey:(NSString *)name;
+- (void)removeImageForKey:(NSString *)name;
+- (void)removeImageForKeys:(NSArray *)names;
 - (void)removeAll;
 
 @end
@@ -36,6 +38,9 @@
 	return imageCache;
 }
 
+#pragma mark -
+#pragma mark Static methods wrapper
+
 + (id)imageNamed:(NSString *)name
 {
     return [[KSImageCache sharedInstance] imageForKey:name];
@@ -51,10 +56,23 @@
     return [[KSImageCache sharedInstance] setImagePath:filepath forKey:name];
 }
 
++ (void)removeImage:(NSString *)name
+{
+    return [[KSImageCache sharedInstance] removeImageForKey:name];
+}
+
++ (void)removeImages:(NSArray *)names
+{
+    return [[KSImageCache sharedInstance] removeImageForKeys:names];
+}
+
 + (void)clear
 {
     return [[KSImageCache sharedInstance] removeAll];
 }
+
+#pragma mark -
+#pragma mark Image cache methods
 
 - (id)init
 {
@@ -108,8 +126,7 @@
         return NO;
     }
     
-    NSFileManager * fileManager = [[NSFileManager alloc] init];
-    if (![fileManager fileExistsAtPath:filepath]) {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:filepath]) {
         KSLog(@" >> Error: File does not exist at %@", filepath);
     }
     
@@ -119,6 +136,30 @@
     }
     
     return YES;
+}
+
+- (void)removeImageForKey:(NSString *)name
+{
+    if (name == nil || [name isEqualToString:@""]) {
+        KSLog(@" >> Error: Name is nil or empty.");
+        return;
+    }
+    
+    @synchronized(_lockObject){
+        [_imageDict removeObjectForKey:name];
+    }
+}
+
+- (void)removeImageForKeys:(NSArray *)names
+{
+    if (names == nil) {
+        KSLog(@" >> Error: Names is nil.");
+        return;
+    }
+    
+    @synchronized(_lockObject){
+        [_imageDict removeObjectsForKeys:names];
+    }
 }
 
 - (void)removeAll
