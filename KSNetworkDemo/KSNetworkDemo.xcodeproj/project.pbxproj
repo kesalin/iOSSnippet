@@ -1,0 +1,346 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		213E2EE41718FCEB00C62471 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213E2EE31718FCEB00C62471 /* UIKit.framework */; };
+		213E2EE61718FCEB00C62471 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213E2EE51718FCEB00C62471 /* Foundation.framework */; };
+		213E2EE81718FCEB00C62471 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213E2EE71718FCEB00C62471 /* CoreGraphics.framework */; };
+		213E2EEE1718FCEB00C62471 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 213E2EEC1718FCEB00C62471 /* InfoPlist.strings */; };
+		213E2EF01718FCEB00C62471 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 213E2EEF1718FCEB00C62471 /* main.m */; };
+		213E2EF41718FCEB00C62471 /* KSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 213E2EF31718FCEB00C62471 /* KSAppDelegate.m */; };
+		213E2EF61718FCEB00C62471 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 213E2EF51718FCEB00C62471 /* Default.png */; };
+		213E2EF81718FCEB00C62471 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 213E2EF71718FCEB00C62471 /* Default@2x.png */; };
+		213E2EFA1718FCEB00C62471 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 213E2EF91718FCEB00C62471 /* Default-568h@2x.png */; };
+		213E2EFD1718FCEB00C62471 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 213E2EFB1718FCEB00C62471 /* MainStoryboard.storyboard */; };
+		213E2F001718FCEB00C62471 /* KSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213E2EFF1718FCEB00C62471 /* KSViewController.m */; };
+		213E2F0B1719042200C62471 /* KSSocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213E2F091719042200C62471 /* KSSocketViewController.m */; };
+		213E2F0C1719042200C62471 /* KSSocketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 213E2F0A1719042200C62471 /* KSSocketViewController.xib */; };
+		213E2F10171913A400C62471 /* KSNetworkDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 213E2F0F171913A400C62471 /* KSNetworkDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		213E2EE01718FCEB00C62471 /* KSNetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSNetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		213E2EE31718FCEB00C62471 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		213E2EE51718FCEB00C62471 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		213E2EE71718FCEB00C62471 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		213E2EEB1718FCEB00C62471 /* KSNetworkDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KSNetworkDemo-Info.plist"; sourceTree = "<group>"; };
+		213E2EED1718FCEB00C62471 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		213E2EEF1718FCEB00C62471 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		213E2EF11718FCEB00C62471 /* KSNetworkDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KSNetworkDemo-Prefix.pch"; sourceTree = "<group>"; };
+		213E2EF21718FCEB00C62471 /* KSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSAppDelegate.h; sourceTree = "<group>"; };
+		213E2EF31718FCEB00C62471 /* KSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSAppDelegate.m; sourceTree = "<group>"; };
+		213E2EF51718FCEB00C62471 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		213E2EF71718FCEB00C62471 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		213E2EF91718FCEB00C62471 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		213E2EFC1718FCEB00C62471 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		213E2EFE1718FCEB00C62471 /* KSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSViewController.h; sourceTree = "<group>"; };
+		213E2EFF1718FCEB00C62471 /* KSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSViewController.m; sourceTree = "<group>"; };
+		213E2F081719042200C62471 /* KSSocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSSocketViewController.h; sourceTree = "<group>"; };
+		213E2F091719042200C62471 /* KSSocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSocketViewController.m; sourceTree = "<group>"; };
+		213E2F0A1719042200C62471 /* KSSocketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSSocketViewController.xib; sourceTree = "<group>"; };
+		213E2F0E171913A400C62471 /* KSNetworkDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSNetworkDelegate.h; sourceTree = "<group>"; };
+		213E2F0F171913A400C62471 /* KSNetworkDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSNetworkDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		213E2EDD1718FCEB00C62471 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				213E2EE41718FCEB00C62471 /* UIKit.framework in Frameworks */,
+				213E2EE61718FCEB00C62471 /* Foundation.framework in Frameworks */,
+				213E2EE81718FCEB00C62471 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		213E2ED71718FCEB00C62471 = {
+			isa = PBXGroup;
+			children = (
+				213E2EE91718FCEB00C62471 /* KSNetworkDemo */,
+				213E2EE21718FCEB00C62471 /* Frameworks */,
+				213E2EE11718FCEB00C62471 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		213E2EE11718FCEB00C62471 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				213E2EE01718FCEB00C62471 /* KSNetworkDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		213E2EE21718FCEB00C62471 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				213E2EE31718FCEB00C62471 /* UIKit.framework */,
+				213E2EE51718FCEB00C62471 /* Foundation.framework */,
+				213E2EE71718FCEB00C62471 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		213E2EE91718FCEB00C62471 /* KSNetworkDemo */ = {
+			isa = PBXGroup;
+			children = (
+				213E2EF21718FCEB00C62471 /* KSAppDelegate.h */,
+				213E2EF31718FCEB00C62471 /* KSAppDelegate.m */,
+				213E2F0D1719135700C62471 /* Network */,
+				213E2F071718FD1800C62471 /* Controllers */,
+				213E2F061718FD0100C62471 /* Resources */,
+				213E2EEA1718FCEB00C62471 /* Supporting Files */,
+			);
+			path = KSNetworkDemo;
+			sourceTree = "<group>";
+		};
+		213E2EEA1718FCEB00C62471 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				213E2EEB1718FCEB00C62471 /* KSNetworkDemo-Info.plist */,
+				213E2EEC1718FCEB00C62471 /* InfoPlist.strings */,
+				213E2EEF1718FCEB00C62471 /* main.m */,
+				213E2EF11718FCEB00C62471 /* KSNetworkDemo-Prefix.pch */,
+				213E2EF51718FCEB00C62471 /* Default.png */,
+				213E2EF71718FCEB00C62471 /* Default@2x.png */,
+				213E2EF91718FCEB00C62471 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		213E2F061718FD0100C62471 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				213E2F0A1719042200C62471 /* KSSocketViewController.xib */,
+				213E2EFB1718FCEB00C62471 /* MainStoryboard.storyboard */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		213E2F071718FD1800C62471 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				213E2F081719042200C62471 /* KSSocketViewController.h */,
+				213E2F091719042200C62471 /* KSSocketViewController.m */,
+				213E2EFE1718FCEB00C62471 /* KSViewController.h */,
+				213E2EFF1718FCEB00C62471 /* KSViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		213E2F0D1719135700C62471 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				213E2F0E171913A400C62471 /* KSNetworkDelegate.h */,
+				213E2F0F171913A400C62471 /* KSNetworkDelegate.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		213E2EDF1718FCEB00C62471 /* KSNetworkDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 213E2F031718FCEB00C62471 /* Build configuration list for PBXNativeTarget "KSNetworkDemo" */;
+			buildPhases = (
+				213E2EDC1718FCEB00C62471 /* Sources */,
+				213E2EDD1718FCEB00C62471 /* Frameworks */,
+				213E2EDE1718FCEB00C62471 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KSNetworkDemo;
+			productName = KSNetworkDemo;
+			productReference = 213E2EE01718FCEB00C62471 /* KSNetworkDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		213E2ED81718FCEB00C62471 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = KS;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "kesalin@gmail.com";
+			};
+			buildConfigurationList = 213E2EDB1718FCEB00C62471 /* Build configuration list for PBXProject "KSNetworkDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 213E2ED71718FCEB00C62471;
+			productRefGroup = 213E2EE11718FCEB00C62471 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				213E2EDF1718FCEB00C62471 /* KSNetworkDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		213E2EDE1718FCEB00C62471 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				213E2EEE1718FCEB00C62471 /* InfoPlist.strings in Resources */,
+				213E2EF61718FCEB00C62471 /* Default.png in Resources */,
+				213E2EF81718FCEB00C62471 /* Default@2x.png in Resources */,
+				213E2EFA1718FCEB00C62471 /* Default-568h@2x.png in Resources */,
+				213E2EFD1718FCEB00C62471 /* MainStoryboard.storyboard in Resources */,
+				213E2F0C1719042200C62471 /* KSSocketViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		213E2EDC1718FCEB00C62471 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				213E2EF01718FCEB00C62471 /* main.m in Sources */,
+				213E2EF41718FCEB00C62471 /* KSAppDelegate.m in Sources */,
+				213E2F001718FCEB00C62471 /* KSViewController.m in Sources */,
+				213E2F0B1719042200C62471 /* KSSocketViewController.m in Sources */,
+				213E2F10171913A400C62471 /* KSNetworkDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		213E2EEC1718FCEB00C62471 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				213E2EED1718FCEB00C62471 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		213E2EFB1718FCEB00C62471 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				213E2EFC1718FCEB00C62471 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		213E2F011718FCEB00C62471 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		213E2F021718FCEB00C62471 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		213E2F041718FCEB00C62471 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KSNetworkDemo/KSNetworkDemo-Prefix.pch";
+				INFOPLIST_FILE = "KSNetworkDemo/KSNetworkDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		213E2F051718FCEB00C62471 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KSNetworkDemo/KSNetworkDemo-Prefix.pch";
+				INFOPLIST_FILE = "KSNetworkDemo/KSNetworkDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		213E2EDB1718FCEB00C62471 /* Build configuration list for PBXProject "KSNetworkDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				213E2F011718FCEB00C62471 /* Debug */,
+				213E2F021718FCEB00C62471 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		213E2F031718FCEB00C62471 /* Build configuration list for PBXNativeTarget "KSNetworkDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				213E2F041718FCEB00C62471 /* Debug */,
+				213E2F051718FCEB00C62471 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 213E2ED81718FCEB00C62471 /* Project object */;
+}
