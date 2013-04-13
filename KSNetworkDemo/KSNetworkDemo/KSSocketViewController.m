@@ -82,12 +82,40 @@
     
     self.connectButton.enabled = NO;
     self.receiveTextView.text = @"Connecting to server...";
+    [self.networkActivityView startAnimating];
     
     NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@", serverHost, serverPort]];
     NSThread * backgroundThread = [[NSThread alloc] initWithTarget:self
                                                           selector:@selector(loadDataFromServerWithURL:)
                                                             object:url];
 	[backgroundThread start];
+}
+
+- (void)networkFailedWithErrorMessage:(NSString *)message
+{
+    // Update UI
+    //
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        NSLog(@"%@", message);
+
+        self.receiveTextView.text = message;
+        self.connectButton.enabled = YES;
+        [self.networkActivityView stopAnimating];
+    }];
+}
+
+- (void)networkSucceedWithData:(NSData *)data
+{
+    // Update UI
+    //
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        NSString * resultsString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@" >> Received string: '%@'", resultsString);
+        
+        self.receiveTextView.text = resultsString;
+        self.connectButton.enabled = YES;
+        [self.networkActivityView stopAnimating];
+    }];
 }
 
 #pragma mark -
@@ -112,7 +140,7 @@
     if (NULL == remoteHostEnt) {
         close(socketFileDescriptor);
         
-        NSLog(@"Unable to resolve the hostname of the warehouse server.");
+        [self networkFailedWithErrorMessage:@"Unable to resolve the hostname of the warehouse server."];
         return;
     }
     
@@ -131,7 +159,8 @@
 	if (-1 == ret) {
 		close(socketFileDescriptor);
 		
-        NSLog(@" >> Failed to connect to %@:%@", host, port);
+        NSString * errorInfo = [NSString stringWithFormat:@" >> Failed to connect to %@:%@", host, port];
+        [self networkFailedWithErrorMessage:errorInfo];
 		return;
 	}
     
@@ -167,16 +196,7 @@
     //
 	close(socketFileDescriptor);
     
-
-    NSString * resultsString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	NSLog(@" >> Received string: '%@'", resultsString);
-
-    // Update UI
-    //
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        self.receiveTextView.text = resultsString;
-        self.connectButton.enabled = YES;
-    }];
+    [self networkSucceedWithData:data];
 }
 
 @end

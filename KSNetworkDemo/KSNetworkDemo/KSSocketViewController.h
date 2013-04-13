@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *serverPortTextField;
 @property (weak, nonatomic) IBOutlet UITextView *receiveTextView;
 @property (weak, nonatomic) IBOutlet UIButton *connectButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *networkActivityView;
 
 - (IBAction)connectButtonClick:(id)sender;
 
