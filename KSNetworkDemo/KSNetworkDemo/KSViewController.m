@@ -22,7 +22,8 @@
     [super viewDidLoad];
     
     _items = @{
-               @"BSD Socket": @"KSSocketViewController"
+               @"BSD Socket": @"KSSocketViewController",
+               @"CFNetwork": @"KSCFNetworkViewController"
                };
 	
     self.mainTableView.dataSource = self;

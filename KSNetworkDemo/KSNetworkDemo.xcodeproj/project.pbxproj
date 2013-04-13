@@ -20,7 +20,8 @@
 		213E2F001718FCEB00C62471 /* KSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213E2EFF1718FCEB00C62471 /* KSViewController.m */; };
 		213E2F0B1719042200C62471 /* KSSocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213E2F091719042200C62471 /* KSSocketViewController.m */; };
 		213E2F0C1719042200C62471 /* KSSocketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 213E2F0A1719042200C62471 /* KSSocketViewController.xib */; };
-		213E2F10171913A400C62471 /* KSNetworkDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 213E2F0F171913A400C62471 /* KSNetworkDelegate.m */; };
+		21F36B5D171999FC006B9932 /* KSCFNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F36B5B171999FB006B9932 /* KSCFNetworkViewController.m */; };
+		21F36B5E171999FC006B9932 /* KSCFNetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21F36B5C171999FC006B9932 /* KSCFNetworkViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,8 +44,9 @@
 		213E2F081719042200C62471 /* KSSocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSSocketViewController.h; sourceTree = "<group>"; };
 		213E2F091719042200C62471 /* KSSocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSocketViewController.m; sourceTree = "<group>"; };
 		213E2F0A1719042200C62471 /* KSSocketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSSocketViewController.xib; sourceTree = "<group>"; };
-		213E2F0E171913A400C62471 /* KSNetworkDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSNetworkDelegate.h; sourceTree = "<group>"; };
-		213E2F0F171913A400C62471 /* KSNetworkDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSNetworkDelegate.m; sourceTree = "<group>"; };
+		21F36B5A171999FB006B9932 /* KSCFNetworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCFNetworkViewController.h; sourceTree = "<group>"; };
+		21F36B5B171999FB006B9932 /* KSCFNetworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCFNetworkViewController.m; sourceTree = "<group>"; };
+		21F36B5C171999FC006B9932 /* KSCFNetworkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSCFNetworkViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,6 @@
 			children = (
 				213E2EF21718FCEB00C62471 /* KSAppDelegate.h */,
 				213E2EF31718FCEB00C62471 /* KSAppDelegate.m */,
-				213E2F0D1719135700C62471 /* Network */,
 				213E2F071718FD1800C62471 /* Controllers */,
 				213E2F061718FD0100C62471 /* Resources */,
 				213E2EEA1718FCEB00C62471 /* Supporting Files */,
@@ -118,6 +119,7 @@
 		213E2F061718FD0100C62471 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				21F36B5C171999FC006B9932 /* KSCFNetworkViewController.xib */,
 				213E2F0A1719042200C62471 /* KSSocketViewController.xib */,
 				213E2EFB1718FCEB00C62471 /* MainStoryboard.storyboard */,
 			);
@@ -127,21 +129,14 @@
 		213E2F071718FD1800C62471 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				213E2F081719042200C62471 /* KSSocketViewController.h */,
-				213E2F091719042200C62471 /* KSSocketViewController.m */,
 				213E2EFE1718FCEB00C62471 /* KSViewController.h */,
 				213E2EFF1718FCEB00C62471 /* KSViewController.m */,
+				213E2F081719042200C62471 /* KSSocketViewController.h */,
+				213E2F091719042200C62471 /* KSSocketViewController.m */,
+				21F36B5A171999FB006B9932 /* KSCFNetworkViewController.h */,
+				21F36B5B171999FB006B9932 /* KSCFNetworkViewController.m */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		213E2F0D1719135700C62471 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				213E2F0E171913A400C62471 /* KSNetworkDelegate.h */,
-				213E2F0F171913A400C62471 /* KSNetworkDelegate.m */,
-			);
-			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +197,7 @@
 				213E2EFA1718FCEB00C62471 /* Default-568h@2x.png in Resources */,
 				213E2EFD1718FCEB00C62471 /* MainStoryboard.storyboard in Resources */,
 				213E2F0C1719042200C62471 /* KSSocketViewController.xib in Resources */,
+				21F36B5E171999FC006B9932 /* KSCFNetworkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +212,7 @@
 				213E2EF41718FCEB00C62471 /* KSAppDelegate.m in Sources */,
 				213E2F001718FCEB00C62471 /* KSViewController.m in Sources */,
 				213E2F0B1719042200C62471 /* KSSocketViewController.m in Sources */,
-				213E2F10171913A400C62471 /* KSNetworkDelegate.m in Sources */,
+				21F36B5D171999FC006B9932 /* KSCFNetworkViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +335,7 @@
 				213E2F051718FCEB00C62471 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

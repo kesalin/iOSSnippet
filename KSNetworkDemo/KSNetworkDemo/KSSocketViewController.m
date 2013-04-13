@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
     
+    self.title = @"BSD Socket";
+    
     self.serverAddressTextField.delegate = self;
     self.serverPortTextField.delegate = self;
     
