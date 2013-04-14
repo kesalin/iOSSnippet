@@ -99,6 +99,8 @@
     self.receiveTextView.text = @"Connecting to server...";
     [self.networkActivityView startAnimating];
     
+    NSLog(@" >> main thread %@", [NSThread currentThread]);
+    
     NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@", serverHost, serverPort]];
     NSThread * backgroundThread = [[NSThread alloc] initWithTarget:self
                                                           selector:@selector(loadDataFromServerWithURL:)
@@ -158,6 +160,8 @@
 
 void socketCallback(CFReadStreamRef stream, CFStreamEventType event, void * myPtr)
 {
+    NSLog(@" >> socketCallback in Thread %@", [NSThread currentThread]);
+    
     KSCFNetworkViewController * controller = (__bridge KSCFNetworkViewController *)myPtr;
 	
 	switch(event) {
