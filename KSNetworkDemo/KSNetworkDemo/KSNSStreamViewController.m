@@ -1,25 +1,29 @@
 //
-//  KSSocketViewController.m
+//  KSNSStreamViewController.m
 //  KSNetworkDemo
 //
-//  Created by kesalin on 13/4/13.
+//  Created by kesalin on 15/4/13.
 //  Copyright (c) 2013 kesalin@gmail.com. All rights reserved.
 //
 
-#import "KSSocketViewController.h"
-#import <arpa/inet.h>
-#import <netdb.h>
+#import "KSNSStreamViewController.h"
+#import "NSStream+StreamsToHost.h"
+
+#define kBufferSize 1024
 
 // See http://www.telnet.org/htm/places.htm
 //
 #define kTestHost @"telnet://towel.blinkenlights.nl"
 #define kTestPort 23
 
-@interface KSSocketViewController ()
+@interface KSNSStreamViewController ()
+{
+    NSMutableData * _receivedData;
+}
 
 @end
 
-@implementation KSSocketViewController
+@implementation KSNSStreamViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,8 +37,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
     
-    self.title = @"BSD Socket";
+    self.title = @"NSStream";
     
     self.serverAddressTextField.delegate = self;
     self.serverPortTextField.delegate = self;
@@ -86,6 +91,8 @@
     self.receiveTextView.text = @"Connecting to server...";
     [self.networkActivityView startAnimating];
     
+    NSLog(@" >> main thread %@", [NSThread currentThread]);
+    
     NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@", serverHost, serverPort]];
     NSThread * backgroundThread = [[NSThread alloc] initWithTarget:self
                                                           selector:@selector(loadDataFromServerWithURL:)
@@ -99,7 +106,7 @@
     //
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         NSLog(@" >> %@", message);
-
+        
         self.receiveTextView.text = message;
         self.connectButton.enabled = YES;
         [self.networkActivityView stopAnimating];
@@ -121,84 +128,100 @@
 }
 
 #pragma mark -
-#pragma mark Socket
+#pragma mark NSStream
+
+- (void)didReceiveData:(NSData *)data {
+	if (_receivedData == nil) {
+		_receivedData = [[NSMutableData alloc] init];
+	}
+	
+	[_receivedData appendData:data];
+    
+    // Update UI
+    //
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        NSString * resultsString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        self.receiveTextView.text = resultsString;
+    }];
+}
+
+- (void)didFinishReceivingData
+{
+    [self networkSucceedWithData:_receivedData];
+}
 
 - (void)loadDataFromServerWithURL:(NSURL *)url
 {
-    NSString * host = [url host];
-    NSNumber * port = [url port];
+    NSInputStream * readStream;
+	[NSStream getStreamsToHostNamed:[url host]
+                               port:[[url port] integerValue]
+                        inputStream:&readStream
+                       outputStream:NULL];
     
-    // Create socket
-    //
-    int socketFileDescriptor = socket(AF_INET, SOCK_STREAM, 0);
-    if (-1 == socketFileDescriptor) {
-        NSLog(@"Failed to create socket.");
-        return;
-    }
-    
-    // Get IP address from host
-    //
-    struct hostent * remoteHostEnt = gethostbyname([host UTF8String]);
-    if (NULL == remoteHostEnt) {
-        close(socketFileDescriptor);
-        
-        [self networkFailedWithErrorMessage:@"Unable to resolve the hostname of the warehouse server."];
-        return;
-    }
-    
-    struct in_addr * remoteInAddr = (struct in_addr *)remoteHostEnt->h_addr_list[0];
-    
-    // Set the socket parameters
-    //
-	struct sockaddr_in socketParameters;
-	socketParameters.sin_family = AF_INET;
-	socketParameters.sin_addr = *remoteInAddr;
-	socketParameters.sin_port = htons([port intValue]);
-    
-    // Connect the socket
-    //
-    int ret = connect(socketFileDescriptor, (struct sockaddr *) &socketParameters, sizeof(socketParameters));
-	if (-1 == ret) {
-		close(socketFileDescriptor);
-		
-        NSString * errorInfo = [NSString stringWithFormat:@" >> Failed to connect to %@:%@", host, port];
-        [self networkFailedWithErrorMessage:errorInfo];
-		return;
-	}
-    
-    NSLog(@" >> Successfully connected to %@:%@", host, port);
+	[readStream setDelegate:self];
+	[readStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+	[readStream open];
+	
+	[[NSRunLoop currentRunLoop] run];
+}
 
-    NSMutableData * data = [[NSMutableData alloc] init];
-	BOOL waitingForData = YES;
-	
-	// Continually receive data until we reach the end of the data
-    //
-    int maxCount = 5;   // just for test.
-    int i = 0;
-	while (waitingForData && i < maxCount) {
-		const char * buffer[1024];
-		int length = sizeof(buffer);
-		
-		// Read a buffer's amount of data from the socket; the number of bytes read is returned
-        //
-		int result = recv(socketFileDescriptor, &buffer, length, 0);
-		if (result > 0) {
-			[data appendBytes:buffer length:result];
-		}
-        else {
-            // if we didn't get any data, stop the receive loop
-            //
-			waitingForData = NO;
-		}
-        
-        ++i;
-	}
-	
-	// Close the socket
-    //
-	close(socketFileDescriptor);
+#pragma mark NSStreamDelegate
+
+- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode
+{
+    NSLog(@" >> NSStreamDelegate in Thread %@", [NSThread currentThread]);
     
-    [self networkSucceedWithData:data];
+	switch (eventCode) {
+		case NSStreamEventHasBytesAvailable: {
+			if (_receivedData == nil) {
+                _receivedData = [[NSMutableData alloc] init];
+            }
+			
+            uint8_t buf[kBufferSize];
+            int numBytesRead = [(NSInputStream *)stream read:buf maxLength:1024];
+			
+            if (numBytesRead > 0) {
+                [self didReceiveData:[NSData dataWithBytes:buf length:numBytesRead]];
+				
+            } else if (numBytesRead == 0) {
+                NSLog(@" >> End of stream reached");
+				
+            } else {
+				NSLog(@" >> Read error occurred");
+			}
+			
+			break;
+		}
+			
+		case NSStreamEventErrorOccurred: {
+			NSError * error = [stream streamError];
+			NSString * errorInfo = [NSString stringWithFormat:@"Failed while reading stream; error '%@' (code %d)", error.localizedDescription, error.code];
+			
+            [self cleanUpStream:stream];
+            
+            [self networkFailedWithErrorMessage:errorInfo];
+		}
+			
+		case NSStreamEventEndEncountered: {
+            
+            [self cleanUpStream:stream];
+            
+            [self didFinishReceivingData];
+
+			break;
+		}
+			
+		default:
+			break;
+	}
+}
+
+- (void)cleanUpStream:(NSStream *)stream
+{
+	[stream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+	[stream close];
+	
+	stream = nil;
 }
 
 @end

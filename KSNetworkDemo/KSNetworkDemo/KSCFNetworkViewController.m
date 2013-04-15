@@ -113,7 +113,7 @@
     // Update UI
     //
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        NSLog(@"%@", message);
+        NSLog(@" >> %@", message);
         
         self.receiveTextView.text = message;
         self.connectButton.enabled = YES;
@@ -136,7 +136,7 @@
 }
 
 #pragma mark -
-#pragma mark Socket
+#pragma mark CFNetwork
 
 - (void)didReceiveData:(NSData *)data {
 	if (_receivedData == nil) {

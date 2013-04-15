@@ -20,6 +20,9 @@
 		213E2F001718FCEB00C62471 /* KSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213E2EFF1718FCEB00C62471 /* KSViewController.m */; };
 		213E2F0B1719042200C62471 /* KSSocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213E2F091719042200C62471 /* KSSocketViewController.m */; };
 		213E2F0C1719042200C62471 /* KSSocketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 213E2F0A1719042200C62471 /* KSSocketViewController.xib */; };
+		21A2522D171B791500882576 /* NSStream+StreamsToHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A2522C171B791500882576 /* NSStream+StreamsToHost.m */; };
+		21A25231171B79D800882576 /* KSNSStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A2522F171B79D800882576 /* KSNSStreamViewController.m */; };
+		21A25232171B79D800882576 /* KSNSStreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A25230171B79D800882576 /* KSNSStreamViewController.xib */; };
 		21F36B5D171999FC006B9932 /* KSCFNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F36B5B171999FB006B9932 /* KSCFNetworkViewController.m */; };
 		21F36B5E171999FC006B9932 /* KSCFNetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21F36B5C171999FC006B9932 /* KSCFNetworkViewController.xib */; };
 /* End PBXBuildFile section */
@@ -44,6 +47,11 @@
 		213E2F081719042200C62471 /* KSSocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSSocketViewController.h; sourceTree = "<group>"; };
 		213E2F091719042200C62471 /* KSSocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSocketViewController.m; sourceTree = "<group>"; };
 		213E2F0A1719042200C62471 /* KSSocketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSSocketViewController.xib; sourceTree = "<group>"; };
+		21A2522B171B791500882576 /* NSStream+StreamsToHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStream+StreamsToHost.h"; sourceTree = "<group>"; };
+		21A2522C171B791500882576 /* NSStream+StreamsToHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStream+StreamsToHost.m"; sourceTree = "<group>"; };
+		21A2522E171B79D800882576 /* KSNSStreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSNSStreamViewController.h; sourceTree = "<group>"; };
+		21A2522F171B79D800882576 /* KSNSStreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSNSStreamViewController.m; sourceTree = "<group>"; };
+		21A25230171B79D800882576 /* KSNSStreamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSNSStreamViewController.xib; sourceTree = "<group>"; };
 		21F36B5A171999FB006B9932 /* KSCFNetworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCFNetworkViewController.h; sourceTree = "<group>"; };
 		21F36B5B171999FB006B9932 /* KSCFNetworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCFNetworkViewController.m; sourceTree = "<group>"; };
 		21F36B5C171999FC006B9932 /* KSCFNetworkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSCFNetworkViewController.xib; sourceTree = "<group>"; };
@@ -95,6 +103,8 @@
 			children = (
 				213E2EF21718FCEB00C62471 /* KSAppDelegate.h */,
 				213E2EF31718FCEB00C62471 /* KSAppDelegate.m */,
+				21A2522B171B791500882576 /* NSStream+StreamsToHost.h */,
+				21A2522C171B791500882576 /* NSStream+StreamsToHost.m */,
 				213E2F071718FD1800C62471 /* Controllers */,
 				213E2F061718FD0100C62471 /* Resources */,
 				213E2EEA1718FCEB00C62471 /* Supporting Files */,
@@ -119,6 +129,7 @@
 		213E2F061718FD0100C62471 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				21A25230171B79D800882576 /* KSNSStreamViewController.xib */,
 				21F36B5C171999FC006B9932 /* KSCFNetworkViewController.xib */,
 				213E2F0A1719042200C62471 /* KSSocketViewController.xib */,
 				213E2EFB1718FCEB00C62471 /* MainStoryboard.storyboard */,
@@ -135,6 +146,8 @@
 				213E2F091719042200C62471 /* KSSocketViewController.m */,
 				21F36B5A171999FB006B9932 /* KSCFNetworkViewController.h */,
 				21F36B5B171999FB006B9932 /* KSCFNetworkViewController.m */,
+				21A2522E171B79D800882576 /* KSNSStreamViewController.h */,
+				21A2522F171B79D800882576 /* KSNSStreamViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -198,6 +211,7 @@
 				213E2EFD1718FCEB00C62471 /* MainStoryboard.storyboard in Resources */,
 				213E2F0C1719042200C62471 /* KSSocketViewController.xib in Resources */,
 				21F36B5E171999FC006B9932 /* KSCFNetworkViewController.xib in Resources */,
+				21A25232171B79D800882576 /* KSNSStreamViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +227,8 @@
 				213E2F001718FCEB00C62471 /* KSViewController.m in Sources */,
 				213E2F0B1719042200C62471 /* KSSocketViewController.m in Sources */,
 				21F36B5D171999FC006B9932 /* KSCFNetworkViewController.m in Sources */,
+				21A2522D171B791500882576 /* NSStream+StreamsToHost.m in Sources */,
+				21A25231171B79D800882576 /* KSNSStreamViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
