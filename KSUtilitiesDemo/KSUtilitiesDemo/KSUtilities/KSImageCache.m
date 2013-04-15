@@ -38,6 +38,10 @@
 	return imageCache;
 }
 
+- (id)copyWithZone:(NSZone *)paramZone{
+    return self;
+}
+
 #pragma mark -
 #pragma mark Static methods wrapper
 
