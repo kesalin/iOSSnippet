@@ -7,7 +7,7 @@ Code snippet on iOS
 Demonstate how to use sqlite on iOS, such as open/close database, create table, insert/update/delete record.
 
 2, CorePlotDemo
-Demonstate how to use CorePlot on iOS, display xygraph and scatter space.
+Demonstate how to use CorePlot on iOS, display xygraph and scatter space.  
 Sreenshots:  
 ![Screenshots](https://github.com/kesalin/iOSSnippet/blob/master/CorePlotDemo/Note01.png)
 
